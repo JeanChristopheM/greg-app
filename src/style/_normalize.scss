@@ -1,0 +1,14 @@
+.card {
+    border-radius: .3rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: .5);
+    transition: box-shadow .2s;
+    &:hover {
+        box-shadow: 
+            2px 2px 5px rgba($color: #000000, $alpha: .5),
+            2px 2px 15px rgba($color: #000000, $alpha: .5);
+    }
+    & + & {
+        margin-top: 1rem;
+    }
+}

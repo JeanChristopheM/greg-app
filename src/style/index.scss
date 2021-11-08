@@ -1,0 +1,95 @@
+@import 'reset';
+@import 'vars';
+@import 'normalize';
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+:root {
+    font-size: 20px;
+    line-height: 20px;
+}
+.App {
+    width: 375px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid $clr-primary;
+    position: relative;
+    user-select: none;
+    font-family: 'Dongle', sans-serif;
+}
+h3 {
+    font-size: 1.4em;
+    padding-block: 1rem;
+    font-weight: bold;
+    color: $clr-secondary;
+}
+.main {
+    color: $clr-secondary;
+    padding: 1rem;
+    height:calc(500px - 3rem);
+    background-color: $clr-primary;
+    overflow: auto;
+    .todayCard {
+        background-image: url('../media/sunny_s_cloudy.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: right;
+    }
+}
+.footer {
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $clr-primary;
+    color: white;
+    border-top: 1px solid $clr-accent3;
+    p {
+        cursor: pointer;
+        position: relative;
+        padding: 1rem;
+        &::after {
+            content:'';
+            position: absolute;
+            width: 100%;
+            height: 10%;
+            background-color: $clr-accent1;
+            top:0;
+            left: 0;
+            opacity: 0;
+        }
+        &.active::after {
+            opacity: 1;
+        }
+    }
+}
+.upcoming {
+
+    display: grid;
+    grid-template-columns: auto min-content;
+    grid-auto-rows:min-content ;
+
+    &__data {
+        h4 {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        p:last-child {
+            font-weight:lighter;
+        }
+    }
+    &__actions {
+        position: relative;
+        padding-left: .5rem;
+        &::after {
+            position: absolute;
+            content:'';
+            width: 2px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $clr-secondary;
+        }
+    }
+}
