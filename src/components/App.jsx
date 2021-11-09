@@ -1,34 +1,32 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
+//Components
 import HomePage from './HomePage.jsx';
 import ListPage from './ListPage.jsx';
 import MoonPage from './MoonPage.jsx';
+//Modules
 import { getUpcomingTasks } from '../modules/upcoming';
-const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
-const formatDate = (date) => {
-  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-}
-const initialState = {
-  page: 'HOME_PAGE',
-  today: formatDate(new Date()),
-  weather: "Sunny",
-  temperature: "16° / 20°",
-  upcoming: getUpcomingTasks(),
-};
+import { getData } from "../modules/getData";
+import HomeIcon from '../modules/homeIcon';
+import { initialState, reducer } from '../modules/useReducerSetup.js';
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'handlePage':
-      let newState = {...state};
-      newState.page = action.page;
-      return {...newState};
-    default:
-      throw new Error();
-  }
-}
-/* Count: {state.count}
-<button onClick={() => dispatch({type: 'decrement'})}>-</button> */
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    const fetchIt = async() => {
+      const data = await getData();
+      dispatch({type: 'updateData', data: data});
+    }
+    fetchIt();
+  }, []);
+  useEffect(() => {
+    const fetchIt = async() => {
+      const data = await getUpcomingTasks();
+      dispatch({type: 'updateUpcoming', data: data});
+    }
+    fetchIt();
+  }, []);
+  
   return (
     <div className="App">
       <header className="header">
@@ -51,20 +49,21 @@ function App() {
       <footer className="footer">
         {
           state.page === "LIST_PAGE" ? 
-          <p className={'active'} onClick={() => dispatch({type: 'handlePage', page: 'LIST_PAGE'})}>ICON</p>:
-          <p onClick={() => dispatch({type: 'handlePage', page: 'LIST_PAGE'})}>ICON</p>
+          <HomeIcon className={'homeicon active'} onClickEvent={() => dispatch({type: 'handlePage', page: 'LIST_PAGE'})} />:
+          <HomeIcon className={'homeicon'} onClickEvent={() => dispatch({type: 'handlePage', page: 'LIST_PAGE'})} />
         }
         {
           state.page === "HOME_PAGE" ? 
-          <p className={'active'} onClick={() => dispatch({type: 'handlePage', page: 'HOME_PAGE'})}>ICON</p>:
-          <p onClick={() => dispatch({type: 'handlePage', page: 'HOME_PAGE'})}>ICON</p>
+          <HomeIcon className={'homeicon active'} onClickEvent={() => dispatch({type: 'handlePage', page: 'HOME_PAGE'})} />:
+          <HomeIcon className={'homeicon'} onClickEvent={() => dispatch({type: 'handlePage', page: 'HOME_PAGE'})} />
         }
         {
           state.page === "MOON_PAGE" ? 
-          <p className={'active'} onClick={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})}>ICON</p>:
-          <p onClick={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})}>ICON</p>
+          <HomeIcon className={'homeicon active'} onClickEvent={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})} />:
+          <HomeIcon className={'homeicon'} onClickEvent={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})} />
         }
-        <p onClick={() => console.log(state)}>O</p>
+        <div onClick={() => console.log(state)}>O</div>
+        
       </footer>
     </div>
   );

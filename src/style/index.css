@@ -3,7 +3,7 @@
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
 */
-@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 *:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
   all: unset;
   display: revert;
@@ -58,8 +58,16 @@ textarea {
 }
 
 :root {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 16px;
+}
+
+#root {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .App {
@@ -72,7 +80,7 @@ textarea {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 h3 {
@@ -91,10 +99,20 @@ h3 {
 }
 
 .main .todayCard {
-  background-image: url("../media/sunny_s_cloudy.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position-x: right;
+  /* 
+        background-image: url('../media/sunny_s_cloudy.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: right; */
+  position: relative;
+}
+
+.main .todayCard .weatherIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: calc(75px + 2rem);
+  height: calc(75px + 2rem);
 }
 
 .footer {
@@ -116,13 +134,12 @@ h3 {
   border-top: 1px solid #2fbf71;
 }
 
-.footer p {
+.footer div {
   cursor: pointer;
   position: relative;
-  padding: 1rem;
 }
 
-.footer p::after {
+.footer div::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -133,8 +150,13 @@ h3 {
   opacity: 0;
 }
 
-.footer p.active::after {
+.footer div.active::after {
   opacity: 1;
+}
+
+.footer .homeicon {
+  width: 3rem;
+  height: 3rem;
 }
 
 .upcoming {

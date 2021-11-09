@@ -1,10 +1,16 @@
 @import 'reset';
 @import 'vars';
 @import 'normalize';
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 :root {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 16px;
+}
+body {
+}
+#root {
+    min-height: 100vh;
+    display:grid;
+    align-items: center;
 }
 .App {
     width: 375px;
@@ -13,7 +19,7 @@
     border: 1px solid $clr-primary;
     position: relative;
     user-select: none;
-    font-family: 'Dongle', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 h3 {
     font-size: 1.4em;
@@ -27,11 +33,19 @@ h3 {
     height:calc(500px - 3rem);
     background-color: $clr-primary;
     overflow: auto;
-    .todayCard {
+    .todayCard {/* 
         background-image: url('../media/sunny_s_cloudy.png');
         background-repeat: no-repeat;
         background-size: contain;
-        background-position-x: right;
+        background-position-x: right; */
+        position: relative;
+        .weatherIcon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width:calc(75px + 2rem);
+            height:calc(75px + 2rem);
+        }
     }
 }
 .footer {
@@ -45,10 +59,9 @@ h3 {
     background-color: $clr-primary;
     color: white;
     border-top: 1px solid $clr-accent3;
-    p {
+    div {
         cursor: pointer;
         position: relative;
-        padding: 1rem;
         &::after {
             content:'';
             position: absolute;
@@ -62,6 +75,11 @@ h3 {
         &.active::after {
             opacity: 1;
         }
+    }
+    .homeicon {
+        $height: 3rem;
+        width: $height;
+        height: $height;
     }
 }
 .upcoming {
