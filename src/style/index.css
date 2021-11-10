@@ -53,10 +53,6 @@ textarea {
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 2px 2px 15px rgba(0, 0, 0, 0.5);
 }
 
-.card + .card {
-  margin-top: 1rem;
-}
-
 :root {
   font-size: 16px;
 }
@@ -174,7 +170,21 @@ h3 {
   height: 3rem;
 }
 
+.upcomingContainer {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 480px) {
+  .upcomingContainer {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
 .upcoming {
+  height: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto min-content;

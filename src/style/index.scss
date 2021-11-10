@@ -90,8 +90,16 @@ h3 {
         height: $height;
     }
 }
+.upcomingContainer {
+    display:grid;
+    gap: 1rem;
+    @media screen and (min-width: 480px) {
+        grid-template-columns: 1fr 1fr;
+        
+    }
+}
 .upcoming {
-
+    height: 100%;
     display: grid;
     grid-template-columns: auto min-content;
     grid-auto-rows:min-content ;
