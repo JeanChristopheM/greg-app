@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/greg-app/static/css/main.700dc10c.chunk.css",
-    "main.js": "/greg-app/static/js/main.6f620edc.chunk.js",
-    "main.js.map": "/greg-app/static/js/main.6f620edc.chunk.js.map",
+    "main.css": "/greg-app/static/css/main.6623b7d0.chunk.css",
+    "main.js": "/greg-app/static/js/main.475c6dc1.chunk.js",
+    "main.js.map": "/greg-app/static/js/main.475c6dc1.chunk.js.map",
     "runtime-main.js": "/greg-app/static/js/runtime-main.716f6799.js",
     "runtime-main.js.map": "/greg-app/static/js/runtime-main.716f6799.js.map",
-    "static/js/2.a9218797.chunk.js": "/greg-app/static/js/2.a9218797.chunk.js",
-    "static/js/2.a9218797.chunk.js.map": "/greg-app/static/js/2.a9218797.chunk.js.map",
+    "static/js/2.a0bf5f3b.chunk.js": "/greg-app/static/js/2.a0bf5f3b.chunk.js",
+    "static/js/2.a0bf5f3b.chunk.js.map": "/greg-app/static/js/2.a0bf5f3b.chunk.js.map",
     "index.html": "/greg-app/index.html",
-    "static/css/main.700dc10c.chunk.css.map": "/greg-app/static/css/main.700dc10c.chunk.css.map",
-    "static/js/2.a9218797.chunk.js.LICENSE.txt": "/greg-app/static/js/2.a9218797.chunk.js.LICENSE.txt"
+    "static/css/main.6623b7d0.chunk.css.map": "/greg-app/static/css/main.6623b7d0.chunk.css.map",
+    "static/js/2.a0bf5f3b.chunk.js.LICENSE.txt": "/greg-app/static/js/2.a0bf5f3b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.716f6799.js",
-    "static/js/2.a9218797.chunk.js",
-    "static/css/main.700dc10c.chunk.css",
-    "static/js/main.6f620edc.chunk.js"
+    "static/js/2.a0bf5f3b.chunk.js",
+    "static/css/main.6623b7d0.chunk.css",
+    "static/js/main.475c6dc1.chunk.js"
   ]
 }
