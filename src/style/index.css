@@ -40,17 +40,14 @@ textarea {
 .card {
   border-radius: .3rem;
   padding: 1rem;
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   -webkit-transition: -webkit-box-shadow .2s;
   transition: -webkit-box-shadow .2s;
   transition: box-shadow .2s;
   transition: box-shadow .2s, -webkit-box-shadow .2s;
-}
-
-.card:hover {
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 2px 2px 15px rgba(0, 0, 0, 0.5);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 2px 2px 15px rgba(0, 0, 0, 0.5);
+  background-color: #525053;
+  /* box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: .5); */
+  -webkit-box-shadow: 0px 0.3px 0.5px rgba(0, 0, 0, 0.053), 0px 0.7px 1.3px rgba(0, 0, 0, 0.077), 0px 1.3px 2.4px rgba(0, 0, 0, 0.095), 0px 2.2px 4.2px rgba(0, 0, 0, 0.113), 0px 4.2px 7.9px rgba(0, 0, 0, 0.137), 0px 10px 19px rgba(0, 0, 0, 0.19);
+          box-shadow: 0px 0.3px 0.5px rgba(0, 0, 0, 0.053), 0px 0.7px 1.3px rgba(0, 0, 0, 0.077), 0px 1.3px 2.4px rgba(0, 0, 0, 0.095), 0px 2.2px 4.2px rgba(0, 0, 0, 0.113), 0px 4.2px 7.9px rgba(0, 0, 0, 0.137), 0px 10px 19px rgba(0, 0, 0, 0.19);
 }
 
 :root {
@@ -137,9 +134,9 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #363537;
+  background-color: #525053;
   color: white;
-  border-top: 1px solid #2fbf71;
+  border-top: 2px solid #2fbf71;
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
@@ -183,7 +180,7 @@ h3 {
   }
 }
 
-.upcoming {
+.upcomingContainer .upcoming {
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -194,21 +191,21 @@ h3 {
   grid-auto-rows: min-content;
 }
 
-.upcoming__data h4 {
+.upcomingContainer .upcoming__data h4 {
   font-size: 1.1em;
   font-weight: bold;
 }
 
-.upcoming__data p:last-child {
+.upcomingContainer .upcoming__data p:last-child {
   font-weight: lighter;
 }
 
-.upcoming__actions {
+.upcomingContainer .upcoming__actions {
   position: relative;
   padding-left: .5rem;
 }
 
-.upcoming__actions::after {
+.upcomingContainer .upcoming__actions::after {
   position: absolute;
   content: '';
   width: 2px;
@@ -216,5 +213,18 @@ h3 {
   top: 0;
   left: 0;
   background-color: #f3eff0;
+}
+
+.dataSetContainer {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 480px) {
+  .dataSetContainer {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
 }
 /*# sourceMappingURL=index.css.map */

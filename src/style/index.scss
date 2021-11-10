@@ -44,7 +44,7 @@ h3 {
         background-size: contain;
         background-position-x: right; */
         position: relative;
-        overflow: hidden;
+        overflow: hidden;        
         .weatherIcon {
             position: absolute;
             right: 0;
@@ -62,9 +62,9 @@ h3 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: $clr-primary;
+    background-color: $clr-primaryLight;
     color: white;
-    border-top: 1px solid $clr-accent3;
+    border-top: 2px solid $clr-accent3;
     position: sticky;
     bottom:0;
     div {
@@ -97,33 +97,41 @@ h3 {
         grid-template-columns: 1fr 1fr;
         
     }
-}
-.upcoming {
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto min-content;
-    grid-auto-rows:min-content ;
-
-    &__data {
-        h4 {
-            font-size: 1.1em;
-            font-weight: bold;
+    .upcoming {
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto min-content;
+        grid-auto-rows:min-content ;
+    
+        &__data {
+            h4 {
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+            p:last-child {
+                font-weight:lighter;
+            }
         }
-        p:last-child {
-            font-weight:lighter;
+        &__actions {
+            position: relative;
+            padding-left: .5rem;
+            &::after {
+                position: absolute;
+                content:'';
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: $clr-secondary;
+            }
         }
     }
-    &__actions {
-        position: relative;
-        padding-left: .5rem;
-        &::after {
-            position: absolute;
-            content:'';
-            width: 2px;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: $clr-secondary;
-        }
+}
+.dataSetContainer {
+    display:grid;
+    gap: 1rem;
+    @media screen and (min-width: 480px) {
+        grid-template-columns: 1fr 1fr;
+        
     }
 }
