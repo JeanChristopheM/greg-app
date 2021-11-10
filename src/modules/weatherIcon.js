@@ -5,7 +5,7 @@ function WeatherIcon({className, weather}) {
     const INPUT_NAME = 'Number 1';
 
     const params = {
-        src: 'weather.riv',
+        src: `${process.env.PUBLIC_URL}/weather.riv`,
         stateMachines: STATE_MACHINE_NAME,
         artboard: 'New Artboard',
         autoplay: true,

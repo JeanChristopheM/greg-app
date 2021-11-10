@@ -5,7 +5,7 @@ const formatDate = (date) => {
 const initialState = {
     page: 'HOME_PAGE',
     today: formatDate(new Date()),
-    weather: "Sunny",
+    weather: 1,
     temperature: "16° / 20°",
     upcoming: [],
     data: []
@@ -24,6 +24,11 @@ function reducer(state, action) {
         let updatedUpcomingState = {...state};
         updatedUpcomingState.upcoming = action.data;
         return {...updatedUpcomingState};
+    case 'cycleWeather':
+        let updatedWeatherState = {...state};
+        if (updatedWeatherState.weather === 2) updatedWeatherState.weather = 0
+        else updatedWeatherState.weather += 1
+        return {...updatedWeatherState};
     default:
         throw new Error();
     }

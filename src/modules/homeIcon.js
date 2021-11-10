@@ -6,7 +6,7 @@ function HomeIcon({className, onClickEvent}) {
     const CLICK_NAME = 'Trigger 2';
 
     const params = {
-        src: 'homeicon.riv',
+        src: `${process.env.PUBLIC_URL}/homeicon.riv`,
         stateMachines: STATE_MACHINE_NAME,
         artboard: 'New Artboard',
         autoplay: true,

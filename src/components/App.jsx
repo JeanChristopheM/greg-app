@@ -26,7 +26,10 @@ function App() {
     }
     fetchIt();
   }, []);
-  
+  const handleWeather = () => {
+    dispatch({type: 'cycleWeather'})
+    console.log(state.weather);
+  }
   return (
     <div className="App">
       <header className="header">
@@ -39,7 +42,7 @@ function App() {
         }
         {
           state.page === "HOME_PAGE" &&
-          <HomePage state={state} />
+          <HomePage state={state} handleWeather={handleWeather}/>
         }
         {
           state.page === "MOON_PAGE" &&
@@ -62,7 +65,9 @@ function App() {
           <HomeIcon className={'homeicon active'} onClickEvent={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})} />:
           <HomeIcon className={'homeicon'} onClickEvent={() => dispatch({type: 'handlePage', page: 'MOON_PAGE'})} />
         }
-        <div onClick={() => console.log(state)}>O</div>
+        <div onClick={() => {
+          handleWeather();
+        }}>O</div>
         
       </footer>
     </div>

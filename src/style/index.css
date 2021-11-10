@@ -61,26 +61,33 @@ textarea {
   font-size: 16px;
 }
 
-#root {
+body {
   min-height: 100vh;
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
+}
+
+#root {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .App {
-  width: 375px;
-  height: 500px;
-  margin: 0 auto;
-  border: 1px solid #363537;
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   font-family: 'Poppins', sans-serif;
+  overflow: auto;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -ms-grid-rows: min-content auto min-content;
+      grid-template-rows: -webkit-min-content auto -webkit-min-content;
+      grid-template-rows: min-content auto min-content;
 }
 
 h3 {
@@ -93,7 +100,6 @@ h3 {
 .main {
   color: #f3eff0;
   padding: 1rem;
-  height: calc(500px - 3rem);
   background-color: #363537;
   overflow: auto;
 }
@@ -105,33 +111,38 @@ h3 {
         background-size: contain;
         background-position-x: right; */
   position: relative;
+  overflow: hidden;
 }
 
 .main .todayCard .weatherIcon {
   position: absolute;
   right: 0;
   top: 0;
-  width: calc(75px + 2rem);
-  height: calc(75px + 2rem);
+  height: 100%;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  aspect-ratio: 1;
+  /* width: 100%;
+            aspect-ratio: 1; */
 }
 
 .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background-color: #363537;
   color: white;
   border-top: 1px solid #2fbf71;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 
 .footer div {
