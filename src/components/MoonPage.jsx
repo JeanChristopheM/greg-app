@@ -1,6 +1,12 @@
+import React from "react";
+import Calendar from "./Calendar";
+
 function MoonPage({state}) {
     return ( 
-        <p>Moon page</p>
+        <React.Fragment>
+            <p>Moon page</p>
+            <Calendar />
+        </React.Fragment>
     );
 }
 
