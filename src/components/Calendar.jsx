@@ -2,7 +2,8 @@ const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Sa
 const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const daysIndex = [7, 0, 1, 2, 3, 4, 5, 6];
 function Calendar() {
-    const today = new Date();
+    const today = new Date(2022, 4, 1);
+    console.log(today);
     const todayData = {
         currentDay: today.getDate(),
         currentMonthIndex: today.getMonth(),
@@ -17,25 +18,32 @@ function Calendar() {
     }
     
     const getDaysToPrint = () => {
-        const results = [];
-        if (currentMonthData.firstDate.getDate() === 1) {
-            for (let i=1;i<=currentMonthData.lastDate.getDate();i++) {
-                results.push(i);
-            }
-            let diff = 35-results.length;
-            for (let i=1;i<=diff;i++) {
-                results.push(i);
-            }
+        const allDaysToPrint = [];
+        let firstDayOfMonth = daysIndex[currentMonthData.firstDate.getDay()];
+        let startOfPrevMonth = prevMonthData.lastDate.getDate() - (firstDayOfMonth -1 );
+        for (let i=startOfPrevMonth;i<=prevMonthData.lastDate.getDate();i++) {
+            allDaysToPrint.push(i);
         }
-        else {
-            let firstDayOfMonth = currentMonthData.firstDate.getDay();
-            
+        for (let i=1;i<=currentMonthData.lastDate.getDate();i++) {
+            allDaysToPrint.push(i);
         }
+        let diff = 42-allDaysToPrint.length;
+        for (let i=1;i<=diff;i++) {
+            allDaysToPrint.push(i);
+        }
+        /* for (let i=0;i<7;i++) {
+            let myArr = results.slice
+        } */
+        const getSeven = (index) => {
+            let data = allDaysToPrint.slice(index, index+7);
+            return data;
+        }
+        const results = [getSeven(0), getSeven(7), getSeven(14), getSeven(21), getSeven(28), getSeven(35)];
         return results;
     }
-    getDaysToPrint();
     return ( 
         <div className="calendar">
+            <h4>Calendrier pour {months[todayData.currentMonthIndex]} {todayData.currentYear}</h4>
             <div className="row">
                 <div className="dayName">L</div>
                 <div className="dayName">M</div>
@@ -45,13 +53,21 @@ function Calendar() {
                 <div className="dayName">S</div>
                 <div className="dayName">D</div>
             </div>
-            <div className="row">
-                {
-                    getDaysToPrint().map(x=> {
-                        return <p>{x}</p>
-                    })
-                }
-            </div>
+            {
+                getDaysToPrint().map(x=> {
+                    return (
+                        <div className="row">
+                            <p>{x[0]}</p>
+                            <p>{x[1]}</p>
+                            <p>{x[2]}</p>
+                            <p>{x[3]}</p>
+                            <p>{x[4]}</p>
+                            <p>{x[5]}</p>
+                            <p>{x[6]}</p>
+                        </div>
+                    );
+                })
+            }
         </div>
     );
 }

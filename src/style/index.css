@@ -54,7 +54,17 @@ textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: .5rem;
+  gap: 1.5rem;
+}
+
+.calendar .row p {
+  height: 1rem;
+  width: 1rem;
+  text-align: center;
+}
+
+.calendar .row + .row {
+  margin-top: 1.5rem;
 }
 
 :root {

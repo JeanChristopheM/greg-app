@@ -1,6 +1,14 @@
 .calendar {
     .row {
         display: flex;
-        gap: .5rem;
+        gap: 1.5rem;
+        p {
+            height: 1rem;
+            width: 1rem;
+            text-align: center;
+        }
+    }
+    .row + .row {
+        margin-top: 1.5rem;
     }
 }
