@@ -1,9 +1,8 @@
 const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-const daysIndex = [7, 0, 1, 2, 3, 4, 5, 6];
-function Calendar() {
-    const today = new Date(2022, 4, 1);
-    console.log(today);
+const daysIndex = [6, 0, 1, 2, 3, 4, 5];
+function Calendar({state, nextMonth, prevMonth}) {
+    const today = state.dateToDisplay;
     const todayData = {
         currentDay: today.getDate(),
         currentMonthIndex: today.getMonth(),
@@ -31,9 +30,6 @@ function Calendar() {
         for (let i=1;i<=diff;i++) {
             allDaysToPrint.push(i);
         }
-        /* for (let i=0;i<7;i++) {
-            let myArr = results.slice
-        } */
         const getSeven = (index) => {
             let data = allDaysToPrint.slice(index, index+7);
             return data;
@@ -43,15 +39,19 @@ function Calendar() {
     }
     return ( 
         <div className="calendar">
-            <h4>Calendrier pour {months[todayData.currentMonthIndex]} {todayData.currentYear}</h4>
+            <div className="calendar__controls">
+                <p onClick={()=> {prevMonth()}}>p</p>
+                <h4>{months[todayData.currentMonthIndex]} {todayData.currentYear}</h4>
+                <p onClick={()=>{nextMonth()}}>n</p>
+            </div>
             <div className="row">
-                <div className="dayName">L</div>
-                <div className="dayName">M</div>
-                <div className="dayName">M</div>
-                <div className="dayName">J</div>
-                <div className="dayName">V</div>
-                <div className="dayName">S</div>
-                <div className="dayName">D</div>
+                <p className="dayName">L</p>
+                <p className="dayName">M</p>
+                <p className="dayName">M</p>
+                <p className="dayName">J</p>
+                <p className="dayName">V</p>
+                <p className="dayName">S</p>
+                <p className="dayName">D</p>
             </div>
             {
                 getDaysToPrint().map(x=> {
