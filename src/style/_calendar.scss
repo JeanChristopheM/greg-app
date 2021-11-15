@@ -1,0 +1,49 @@
+.calendar {
+    $spacing: .4rem;
+    max-width: max-content;
+    h4 {
+        display: inline;
+    }
+    .row {
+        display: flex;
+        gap: $spacing;
+        p {
+            height: 2rem;
+            width: 2rem;
+            background-color: $clr-primaryLight;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            line-height: 1rem;
+            border-radius: 50%;
+            &:hover {
+                background-color: $clr-accent3;
+            }
+        }
+    }
+    .dayName {
+        background-color: $clr-accent1 !important;
+    }
+    .row + .row {
+        margin-top: $spacing;
+    }
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: .5rem;
+        p {
+            height: 2rem;
+            width: 2rem;
+            background-color: $clr-primaryLight;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            line-height: 1rem;
+            border-radius: 50%;
+            &:hover {
+                background-color: $clr-accent3;
+            }
+        }
+    }
+}

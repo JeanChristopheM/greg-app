@@ -27,8 +27,13 @@ function App() {
     fetchIt();
   }, []);
   const handleWeather = () => {
-    dispatch({type: 'cycleWeather'})
-    console.log(state.weather);
+    dispatch({type: 'cycleWeather'});
+  }
+  const nextMonth = () => {
+    dispatch({type: 'nextMonth'});
+  }
+  const prevMonth = () => {
+    dispatch({type: 'prevMonth'});
   }
   return (
     <div className="App">
@@ -46,7 +51,7 @@ function App() {
         }
         {
           state.page === "MOON_PAGE" &&
-          <MoonPage state={state} />
+          <MoonPage state={state} nextMonth={nextMonth} prevMonth={prevMonth} />
         }
       </main>
       <footer className="footer">
