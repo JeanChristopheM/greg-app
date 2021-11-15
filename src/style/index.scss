@@ -2,6 +2,9 @@
 @import 'vars';
 @import 'normalize';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import 'footer';
+
 :root {
     font-size: 16px;
 }
@@ -38,11 +41,7 @@ h3 {
     padding: 1rem;
     background-color: $clr-primary;
     overflow: auto;
-    .todayCard {/* 
-        background-image: url('../media/sunny_s_cloudy.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position-x: right; */
+    .todayCard {
         position: relative;
         overflow: hidden;
         .weatherIcon {
@@ -52,44 +51,10 @@ h3 {
             height:100%;
             width:min-content;
             aspect-ratio: 1;
-            /* width: 100%;
-            aspect-ratio: 1; */
-            //calc(75px + 2rem)
         }
     }
 }
-.footer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: $clr-primary;
-    color: white;
-    border-top: 1px solid $clr-accent3;
-    position: sticky;
-    bottom:0;
-    div {
-        cursor: pointer;
-        position: relative;
-        &::after {
-            content:'';
-            position: absolute;
-            width: 100%;
-            height: 10%;
-            background-color: $clr-accent1;
-            top:0;
-            left: 0;
-            opacity: 0;
-        }
-        &.active::after {
-            opacity: 1;
-        }
-    }
-    .homeicon {
-        $height: 3rem;
-        width: $height;
-        height: $height;
-    }
-}
+
 .upcomingContainer {
     display:grid;
     gap: 1rem;
