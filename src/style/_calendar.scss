@@ -1,6 +1,7 @@
 .calendar {
     $spacing: .4rem;
     max-width: max-content;
+    margin: 0 auto;
     h4 {
         display: inline;
     }
@@ -10,19 +11,24 @@
         p {
             height: 2rem;
             width: 2rem;
-            background-color: $clr-primaryLight;
             display: grid;
             justify-content: center;
             align-items: center;
             line-height: 1rem;
             border-radius: 50%;
+        }
+        .currentMonth {
+            background-color: $clr-primary;
             &:hover {
                 background-color: $clr-accent3;
             }
         }
-    }
-    .dayName {
-        background-color: $clr-accent1 !important;
+        .otherMonth {
+            color: rgba($color: #fff, $alpha: .25);
+        }
+        .dayName {
+            background-color: $clr-accent1;
+        }
     }
     .row + .row {
         margin-top: $spacing;
@@ -35,7 +41,7 @@
         p {
             height: 2rem;
             width: 2rem;
-            background-color: $clr-primaryLight;
+            background-color: $clr-primary;
             display: grid;
             justify-content: center;
             align-items: center;

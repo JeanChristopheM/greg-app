@@ -23,8 +23,9 @@ function reducer(state, action) {
         return {...updatedDataState};
     case 'updateUpcoming':
         let updatedUpcomingState = {...state};
-        updatedUpcomingState.upcoming = action.data;
-        return {...updatedUpcomingState};
+        let filteredItems = updatedUpcomingState.data.filter(item => item.date.includes('Juillet'));
+        updatedUpcomingState.upcoming = filteredItems;
+        return {...updatedUpcomingState}
     case 'cycleWeather':
         let updatedWeatherState = {...state};
         if (updatedWeatherState.weather === 2) updatedWeatherState.weather = 0

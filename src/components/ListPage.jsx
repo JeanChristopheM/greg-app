@@ -3,7 +3,7 @@ import React from "react";
 function ListPage({state}) {
     return ( 
     <React.Fragment>
-        <h3>Database</h3>
+        <h3>Mes tâches</h3>
         <div className="dataSetContainer">
             {
                 state.data.length > 0 ?

@@ -4,7 +4,6 @@ import HomePage from './HomePage.jsx';
 import ListPage from './ListPage.jsx';
 import MoonPage from './MoonPage.jsx';
 //Modules
-import { getUpcomingTasks } from '../modules/upcoming';
 import { getData } from "../modules/getData";
 import HomeIcon from '../modules/homeIcon';
 import { initialState, reducer } from '../modules/useReducerSetup.js';
@@ -12,6 +11,8 @@ import { initialState, reducer } from '../modules/useReducerSetup.js';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Initial Loading Effects
   useEffect(() => {
     const fetchIt = async() => {
       const data = await getData();
@@ -19,13 +20,8 @@ function App() {
     }
     fetchIt();
   }, []);
-  useEffect(() => {
-    const fetchIt = async() => {
-      const data = await getUpcomingTasks();
-      dispatch({type: 'updateUpcoming', data: data});
-    }
-    fetchIt();
-  }, []);
+
+  // Handler Functions
   const handleWeather = () => {
     dispatch({type: 'cycleWeather'});
   }
@@ -35,6 +31,12 @@ function App() {
   const prevMonth = () => {
     dispatch({type: 'prevMonth'});
   }
+
+  useEffect(() => {
+    if (state.data.length === 0) return
+    dispatch({type: 'updateUpcoming'});
+  },[state.data])
+  
   return (
     <div className="App">
       <header className="header">

@@ -8,7 +8,7 @@ const getData = async () => {
         })).json();
         //return data;
         return new Promise((resolve) => {
-            setTimeout(() => resolve(data), 5000)
+            setTimeout(() => resolve(data), 1000)
             })
     } catch (err) {
         console.log(`The error is : ${err}`);

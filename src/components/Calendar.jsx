@@ -1,6 +1,6 @@
-const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const daysIndex = [6, 0, 1, 2, 3, 4, 5];
+
 function Calendar({state, nextMonth, prevMonth}) {
     const today = state.dateToDisplay;
     const todayData = {
@@ -9,26 +9,33 @@ function Calendar({state, nextMonth, prevMonth}) {
         currentYear: today.getFullYear()
     }
     const currentMonthData = {
-        firstDate: new Date(todayData.currentYear, todayData.currentMonthIndex, 1),
-        lastDate: new Date(todayData.currentYear, todayData.currentMonthIndex +1, 0),
+        firstDate: new Date(todayData.currentYear, todayData.currentMonthIndex, 1).getDay(),
+        lastDate: new Date(todayData.currentYear, todayData.currentMonthIndex +1, 0).getDate(),
     }
     const prevMonthData = {
-        lastDate: new Date(todayData.currentYear, todayData.currentMonthIndex, 0),
+        lastDate: new Date(todayData.currentYear, todayData.currentMonthIndex, 0).getDate(),
     }
     
-    const getDaysToPrint = () => {
+    const getLayout = () => {
         const allDaysToPrint = [];
-        let firstDayOfMonth = daysIndex[currentMonthData.firstDate.getDay()];
-        let startOfPrevMonth = prevMonthData.lastDate.getDate() - (firstDayOfMonth -1 );
-        for (let i=startOfPrevMonth;i<=prevMonthData.lastDate.getDate();i++) {
-            allDaysToPrint.push(i);
+        let firstDayOfMonth = daysIndex[currentMonthData.firstDate];
+        let startOfPrevMonth = prevMonthData.lastDate - (firstDayOfMonth -1 );
+        let key = 1;
+        // Getting previous month dates to show
+        for (let i=startOfPrevMonth;i<=prevMonthData.lastDate;i++) {
+            allDaysToPrint.push({nb:i,current:false, key:key});
+            key++;
         }
-        for (let i=1;i<=currentMonthData.lastDate.getDate();i++) {
-            allDaysToPrint.push(i);
+        // Getting the current month dates
+        for (let i=1;i<=currentMonthData.lastDate;i++) {
+            allDaysToPrint.push({nb:i,current:true, key:key});
+            key++;
         }
+        // Getting the rest of the dates to fill up the calendar
         let diff = 42-allDaysToPrint.length;
         for (let i=1;i<=diff;i++) {
-            allDaysToPrint.push(i);
+            allDaysToPrint.push({nb:i,current:false, key:key});
+            key++;
         }
         const getSeven = (index) => {
             let data = allDaysToPrint.slice(index, index+7);
@@ -40,9 +47,9 @@ function Calendar({state, nextMonth, prevMonth}) {
     return ( 
         <div className="calendar">
             <div className="calendar__controls">
-                <p onClick={()=> {prevMonth()}}>p</p>
+                <p onClick={()=> {prevMonth()}}>{"<"}</p>
                 <h4>{months[todayData.currentMonthIndex]} {todayData.currentYear}</h4>
-                <p onClick={()=>{nextMonth()}}>n</p>
+                <p onClick={()=>{nextMonth()}}>{">"}</p>
             </div>
             <div className="row">
                 <p className="dayName">L</p>
@@ -54,16 +61,16 @@ function Calendar({state, nextMonth, prevMonth}) {
                 <p className="dayName">D</p>
             </div>
             {
-                getDaysToPrint().map(x=> {
+                getLayout().map(x=> {
                     return (
-                        <div className="row">
-                            <p>{x[0]}</p>
-                            <p>{x[1]}</p>
-                            <p>{x[2]}</p>
-                            <p>{x[3]}</p>
-                            <p>{x[4]}</p>
-                            <p>{x[5]}</p>
-                            <p>{x[6]}</p>
+                        <div className="row" key={`${x[0].key}-row`}>
+                            <p className={x[0].current ? "currentMonth": "otherMonth"} key={x[0].key}>{x[0].nb}</p>
+                            <p className={x[1].current ? "currentMonth": "otherMonth"} key={x[1].key}>{x[1].nb}</p>
+                            <p className={x[2].current ? "currentMonth": "otherMonth"} key={x[2].key}>{x[2].nb}</p>
+                            <p className={x[3].current ? "currentMonth": "otherMonth"} key={x[3].key}>{x[3].nb}</p>
+                            <p className={x[4].current ? "currentMonth": "otherMonth"} key={x[4].key}>{x[4].nb}</p>
+                            <p className={x[5].current ? "currentMonth": "otherMonth"} key={x[5].key}>{x[5].nb}</p>
+                            <p className={x[6].current ? "currentMonth": "otherMonth"} key={x[6].key}>{x[6].nb}</p>
                         </div>
                     );
                 })
